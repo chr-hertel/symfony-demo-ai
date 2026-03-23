@@ -1437,6 +1437,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  * }
  * @psalm-type LiveComponentConfig = array{
  *     secret?: scalar|Param|null, // The secret used to compute fingerprints and checksums // Default: "%kernel.secret%"
+ *     fetch_credentials?: "same-origin"|"include"|"omit"|Param, // The default fetch credentials mode for all Live Components ('same-origin', 'include', 'omit') // Default: "same-origin"
  * }
  * @psalm-type StimulusConfig = array{
  *     controller_paths?: list<scalar|Param|null>,
@@ -1467,6 +1468,9 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         path?: scalar|Param|null, // The local icon set directory path. (cannot be used with 'alias')
  *         alias?: scalar|Param|null, // The remote icon set identifier. (cannot be used with 'path')
  *         icon_attributes?: array<string, scalar|Param|null>,
+ *         suffixes?: array<string, array{ // The suffix name (e.g. "solid", "20-solid") // Default: []
+ *             icon_attributes?: array<string, scalar|Param|null>,
+ *         }>,
  *     }>,
  *     aliases?: array<string, string|Param>,
  *     iconify?: bool|array{ // Configuration for the remote icon service.
@@ -1571,9 +1575,10 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             http_client?: string|Param, // Service ID of the HTTP client to use // Default: "http_client"
  *         },
  *         ollama?: array{
- *             endpoint?: string|Param, // Endpoint for Ollama (e.g. "http://127.0.0.1:11434" for local, or a cloud endpoint). If null, the http_client is used as-is and must already be configured with a base URI.
- *             api_key?: string|Param, // API key for Ollama Cloud authentication (optional for local usage)
+ *             endpoint?: string|Param, // Endpoint for Ollama (e.g. "http://127.0.0.1:11434" for local, or a cloud endpoint). If null, the http_client is used as-is and must already be configured with a base URI. // Default: null
+ *             api_key?: string|Param, // API key for Ollama Cloud authentication (optional for local usage) // Default: null
  *             http_client?: string|Param, // Service ID of the HTTP client to use. When "endpoint" is null, this client must be pre-configured (e.g. with a base_uri). // Default: "http_client"
+ *             api_catalog?: bool|Param, // If set, the Ollama API will be used to build the catalog and retrieve models information, using this option leads to additional HTTP calls
  *         },
  *         openai?: array{
  *             api_key?: string|Param,
@@ -1796,12 +1801,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             index_name?: string|Param,
  *             filter?: array<mixed>,
  *             top_k?: int|Param, // Default number of results to return // Default: 3
- *         }>,
- *         sqlite?: array<string, array{ // Default: []
- *             dsn?: string|Param,
- *             connection?: string|Param,
- *             table_name?: string|Param,
- *             strategy?: string|Param,
  *         }>,
  *         supabase?: array<string, array{ // Default: []
  *             http_client?: string|Param, // Service ID of the HTTP client to use // Default: "http_client"
