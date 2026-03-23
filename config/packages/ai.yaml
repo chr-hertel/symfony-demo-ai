@@ -24,6 +24,12 @@ ai:
         openai:
             platform: 'ai.platform.openai'
             model: 'text-embedding-ada-002'
+    indexer:
+        blog_posts:
+            loader: 'App\Store\PostLoader'
+            source: 'database'
+            vectorizer: 'ai.vectorizer.openai'
+            store: 'ai.store.postgres.default'
 
 services:
     _defaults:
