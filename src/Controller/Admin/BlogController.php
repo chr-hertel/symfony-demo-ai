@@ -168,11 +168,6 @@ final class BlogController extends AbstractController
             return $this->redirectToRoute('admin_post_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        // Delete the tags associated with this blog post. This is done automatically
-        // by Doctrine, except for SQLite (the database used in this application)
-        // because foreign key support is not enabled by default in SQLite
-        $post->getTags()->clear();
-
         $entityManager->remove($post);
         $entityManager->flush();
 

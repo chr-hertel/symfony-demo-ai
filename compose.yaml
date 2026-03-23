@@ -1,0 +1,19 @@
+services:
+  database:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_DB: symfony_demo
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: '!ChangeMe!'
+    ports:
+      - '5432:5432'
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
+    healthcheck:
+      test: ['CMD', 'pg_isready', '-U', 'app', '-d', 'symfony_demo']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  database_data:
