@@ -1,9 +1,7 @@
 ai:
-    vectorizer:
+    platform:
         openai:
-            platform: 'ai.platform.openai'
-            model: 'text-embedding-ada-002'
-
+            api_key: '%env(OPENAI_API_KEY)%'
     agent:
         travel_chat:
             platform: 'ai.platform.openai'
@@ -17,6 +15,15 @@ ai:
                 markdown for formatting.
             tools:
                 - 'Symfony\AI\Agent\Bridge\SimilaritySearch\SimilaritySearch'
+    store:
+        postgres:
+            default:
+                dbal_connection: 'doctrine.dbal.default_connection'
+                table_name: 'ai_documents'
+    vectorizer:
+        openai:
+            platform: 'ai.platform.openai'
+            model: 'text-embedding-ada-002'
 
 services:
     _defaults:
@@ -24,6 +31,5 @@ services:
         autoconfigure: true
 
     Symfony\AI\Agent\Bridge\SimilaritySearch\SimilaritySearch:
-        arguments:
-            $vectorizer: '@ai.vectorizer.openai'
-            $store: '@ai.store.postgres.default'
+        $vectorizer: '@ai.vectorizer.openai'
+        $store: '@ai.store.postgres.default'
