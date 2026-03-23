@@ -1,6 +1,7 @@
 doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
+        schema_filter: '~^(?!ai_)~'
 
         profiling_collect_backtrace: '%kernel.debug%'
 
