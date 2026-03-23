@@ -1,81 +1,80 @@
-Symfony Demo Application
-========================
+Symfony Demo + AI
+=================
 
-The "Symfony Demo Application" is a reference application created to show how
-to develop applications following the [Symfony Best Practices][1].
+This project extends the [Symfony Demo Application][1] with a RAG-powered travel chatbot
+using [Symfony AI][2], PostgreSQL with [pgvector][3], and OpenAI.
 
-You can also learn about these practices in [the official Symfony Book][5].
+The blog is pre-filled with 30 travel articles about European destinations. The chat feature
+uses similarity search over the embedded blog posts to answer user questions and links to
+source articles.
 
 Requirements
 ------------
 
-  * PHP 8.2.0 or higher;
+  * PHP 8.4 or higher;
   * PDO-PostgreSQL PHP extension enabled;
-  * and the [usual Symfony application requirements][2].
+  * Docker (for PostgreSQL with pgvector);
+  * An [OpenAI API key][4];
+  * and the [usual Symfony application requirements][5].
 
 Installation
 ------------
 
-There are 3 different ways of installing this project depending on your needs:
-
-**Option 1.** [Download Symfony CLI][4] and use the `symfony` binary installed
-on your computer to run this command:
-
 ```bash
-symfony new --demo my_project
+git clone https://github.com/chr-hertel/symfony-demo-ai.git
+cd symfony-demo-ai
+composer install
 ```
 
-**Option 2.** [Download Composer][6] and use the `composer` binary installed
-on your computer to run these commands:
+Set your OpenAI API key in `.env.local`:
 
 ```bash
-# you can create a new project based on the Symfony Demo project...
-composer create-project symfony/symfony-demo my_project
+echo "OPENAI_API_KEY=sk-your-key-here" >> .env.local
+```
 
-# ...or you can clone the code repository and install its dependencies
-git clone https://github.com/symfony/demo.git my_project
-cd my_project/
-composer install
+Setup
+-----
+
+Start the database and initialize everything:
+
+```bash
+# Start PostgreSQL with pgvector
+docker compose up -d
+
+# Create the database schema
+php bin/console doctrine:schema:create
+
+# Load the travel blog fixtures
+php bin/console doctrine:fixtures:load --no-interaction
+
+# Create the vector store table
+php bin/console ai:store:setup ai.store.postgres.default
+
+# Index blog posts for similarity search
+php bin/console ai:store:index blog_posts
 ```
 
 Usage
 -----
 
-There's no need to configure anything before running the application. There are
-2 different ways of running this application depending on your needs:
-
-**Option 1.** [Download Symfony CLI][4] and run this command:
+[Download Symfony CLI][6] and run:
 
 ```bash
-cd my_project/
 symfony serve
 ```
 
-Then access the application in your browser at the given URL (<https://localhost:8000> by default).
-
-**Option 2.** Use a web server like Nginx or Apache to run the application
-(read the documentation about [configuring a web server for Symfony][3]).
-
-On your local machine, you can run this command to use the built-in PHP web server:
-
-```bash
-cd my_project/
-php -S localhost:8000 -t public/
-```
+Then open <https://localhost:8000> and click **Chat** in the navigation bar.
 
 Tests
 -----
 
-Execute this command to run tests:
-
 ```bash
-cd my_project/
 ./bin/phpunit
 ```
 
-[1]: https://symfony.com/doc/current/best_practices.html
-[2]: https://symfony.com/doc/current/setup.html#technical-requirements
-[3]: https://symfony.com/doc/current/setup/web_server_configuration.html
-[4]: https://symfony.com/download
-[5]: https://symfony.com/book
-[6]: https://getcomposer.org/
+[1]: https://github.com/symfony/demo
+[2]: https://github.com/symfony/ai
+[3]: https://github.com/pgvector/pgvector
+[4]: https://platform.openai.com/api-keys
+[5]: https://symfony.com/doc/current/setup.html#technical-requirements
+[6]: https://symfony.com/download
