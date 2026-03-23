@@ -307,6 +307,10 @@
                 <source>menu.search</source>
                 <target>Search</target>
             </trans-unit>
+            <trans-unit id="menu.chat">
+                <source>menu.chat</source>
+                <target>Chat</target>
+            </trans-unit>
 
             <trans-unit id="post.to_publish_a_comment">
                 <source>post.to_publish_a_comment</source>

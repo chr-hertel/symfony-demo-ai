@@ -3,3 +3,4 @@ ai:
         postgres:
             default:
                 dbal_connection: 'doctrine.dbal.default_connection'
+                table_name: 'ai_documents'

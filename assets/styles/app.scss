@@ -507,3 +507,72 @@ body#blog_search .post-metadata {
   font-size: 16px;
   margin-bottom: 8px;
 }
+
+/* Page: 'Chat'
+   ------------------------------------------------------------------------- */
+body#chat-page {
+  padding-top: 56px;
+}
+
+body#chat-page .body-container {
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  width: 100%;
+}
+
+body#chat-page footer {
+  display: none;
+}
+
+.chat-container {
+  height: calc(100vh - 56px);
+}
+
+.chat-body {
+  background: #f8f9fa;
+}
+
+.chat-avatar {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+}
+
+.bot-avatar {
+  background: #3182ce;
+  color: #fff;
+}
+
+.user-avatar {
+  background: #18bc9c;
+  color: #fff;
+}
+
+.bot-message {
+  background: #fff;
+  border: 1px solid var(--gray-300);
+  max-width: 75%;
+}
+
+.bot-message p {
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+.bot-message.loading {
+  color: var(--gray-500);
+}
+
+.user-message {
+  background: #18bc9c;
+  color: #fff;
+  max-width: 75%;
+  font-size: 15px;
+}
+
+.chat-footer input:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

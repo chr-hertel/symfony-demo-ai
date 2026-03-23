@@ -10,7 +10,10 @@
         { "type": "path", "url": "/home/christopher/Projects/SymfonyAI/repo/src/store" },
         { "type": "path", "url": "/home/christopher/Projects/SymfonyAI/repo/src/platform/src/Bridge/OpenAi" },
         { "type": "path", "url": "/home/christopher/Projects/SymfonyAI/repo/src/platform/src/Bridge/OpenResponses" },
-        { "type": "path", "url": "/home/christopher/Projects/SymfonyAI/repo/src/store/src/Bridge/Postgres" }
+        { "type": "path", "url": "/home/christopher/Projects/SymfonyAI/repo/src/store/src/Bridge/Postgres" },
+        { "type": "path", "url": "/home/christopher/Projects/SymfonyAI/repo/src/agent/src/Bridge/SimilaritySearch" },
+        { "type": "path", "url": "/home/christopher/Projects/SymfonyAI/repo/src/chat" },
+        { "type": "path", "url": "/home/christopher/Projects/SymfonyAI/repo/src/chat/src/Bridge/Session" }
     ],
     "require": {
         "php": ">=8.4",
@@ -23,10 +26,13 @@
         "league/commonmark": "^2.1",
         "symfony/ai-agent": "dev-main as 0.6.99",
         "symfony/ai-bundle": "dev-main as 0.6.99",
+        "symfony/ai-chat": "dev-main as 0.6.99",
         "symfony/ai-open-ai-platform": "dev-main as 0.6.99",
         "symfony/ai-open-responses-platform": "dev-main as 0.6.99",
         "symfony/ai-platform": "dev-main as 0.6.99",
         "symfony/ai-postgres-store": "dev-main as 0.6.99",
+        "symfony/ai-session-message-store": "dev-main as 0.6.99",
+        "symfony/ai-similarity-search-tool": "dev-main as 0.6.99",
         "symfony/ai-store": "dev-main as 0.6.99",
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "^8",
