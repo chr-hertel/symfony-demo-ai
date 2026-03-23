@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4612676d53eed027e29e98b81974da54",
+    "content-hash": "89f51916c3ee39e7f3325cc53ff2a702",
     "packages": [
         {
             "name": "composer/semver",
@@ -2619,76 +2619,6 @@
             }
         },
         {
-            "name": "symfony/ai-chat",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "/home/christopher/Projects/SymfonyAI/repo/src/chat",
-                "reference": "591ba471a6b008c58a495373a23738bd1a59f589"
-            },
-            "require": {
-                "php": ">=8.2",
-                "symfony/ai-agent": "^0.6",
-                "symfony/ai-platform": "^0.6",
-                "symfony/service-contracts": "^2.5|^3"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^2.1",
-                "phpstan/phpstan-phpunit": "^2.0",
-                "phpstan/phpstan-strict-rules": "^2.0",
-                "phpunit/phpunit": "^11.5.53",
-                "symfony/clock": "^7.3|^8.0",
-                "symfony/console": "^7.3|^8.0",
-                "symfony/dependency-injection": "^7.3|^8.0",
-                "symfony/serializer": "^7.3|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "thanks": {
-                    "name": "symfony/ai",
-                    "url": "https://github.com/symfony/ai"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\AI\\Chat\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Symfony\\AI\\Chat\\Tests\\": "tests/",
-                    "Symfony\\AI\\PHPStan\\": "../../.phpstan/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christopher Hertel",
-                    "email": "mail@christopher-hertel.de"
-                },
-                {
-                    "name": "Oskar Stark",
-                    "email": "oskarstark@googlemail.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "PHP library for building chats with agents.",
-            "keywords": [
-                "agent",
-                "ai",
-                "chat",
-                "llm"
-            ],
-            "transport-options": {
-                "relative": false
-            }
-        },
-        {
             "name": "symfony/ai-open-ai-platform",
             "version": "dev-main",
             "dist": {
@@ -3005,72 +2935,6 @@
                 "postgresql",
                 "store",
                 "vector"
-            ],
-            "transport-options": {
-                "relative": false
-            }
-        },
-        {
-            "name": "symfony/ai-session-message-store",
-            "version": "dev-main",
-            "dist": {
-                "type": "path",
-                "url": "/home/christopher/Projects/SymfonyAI/repo/src/chat/src/Bridge/Session",
-                "reference": "bdde2f150ff0b1dc512825f118912a7ea3348366"
-            },
-            "require": {
-                "php": ">=8.2",
-                "symfony/ai-chat": "^0.6",
-                "symfony/http-foundation": "^7.3|^8.0"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^2.1",
-                "phpstan/phpstan-phpunit": "^2.0",
-                "phpstan/phpstan-strict-rules": "^2.0",
-                "phpunit/phpunit": "^11.5.53"
-            },
-            "type": "symfony-ai-message-store",
-            "extra": {
-                "thanks": {
-                    "name": "symfony/ai",
-                    "url": "https://github.com/symfony/ai"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\AI\\Chat\\Bridge\\Session\\": ""
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Symfony\\AI\\PHPStan\\": "../../../../../.phpstan/",
-                    "Symfony\\AI\\Chat\\Bridge\\Session\\Tests\\": "Tests/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christopher Hertel",
-                    "email": "mail@christopher-hertel.de"
-                },
-                {
-                    "name": "Oskar Stark",
-                    "email": "oskarstark@googlemail.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony session message store bridge for Symfony AI Chat",
-            "keywords": [
-                "ai",
-                "bridge",
-                "chat",
-                "message-store",
-                "session"
             ],
             "transport-options": {
                 "relative": false
@@ -12957,12 +12821,6 @@
             "alias_normalized": "0.6.99.0"
         },
         {
-            "package": "symfony/ai-chat",
-            "version": "dev-main",
-            "alias": "0.6.99",
-            "alias_normalized": "0.6.99.0"
-        },
-        {
             "package": "symfony/ai-open-ai-platform",
             "version": "dev-main",
             "alias": "0.6.99",
@@ -12987,12 +12845,6 @@
             "alias_normalized": "0.6.99.0"
         },
         {
-            "package": "symfony/ai-session-message-store",
-            "version": "dev-main",
-            "alias": "0.6.99",
-            "alias_normalized": "0.6.99.0"
-        },
-        {
             "package": "symfony/ai-similarity-search-tool",
             "version": "dev-main",
             "alias": "0.6.99",
@@ -13009,12 +12861,10 @@
     "stability-flags": {
         "symfony/ai-agent": 20,
         "symfony/ai-bundle": 20,
-        "symfony/ai-chat": 20,
         "symfony/ai-open-ai-platform": 20,
         "symfony/ai-open-responses-platform": 20,
         "symfony/ai-platform": 20,
         "symfony/ai-postgres-store": 20,
-        "symfony/ai-session-message-store": 20,
         "symfony/ai-similarity-search-tool": 20,
         "symfony/ai-store": 20
     },
