@@ -93,10 +93,10 @@ final class BlogControllerTest extends WebTestCase
     public function testAjaxSearch(): void
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/en/blog/search', ['q' => 'lorem']);
+        $crawler = $client->request('GET', '/en/blog/search', ['q' => 'Amsterdam']);
 
         $this->assertResponseIsSuccessful();
         $this->assertCount(1, $crawler->filter('article.post'));
-        $this->assertSame('Lorem ipsum dolor sit amet consectetur adipiscing elit', $crawler->filter('article.post')->first()->filter('h2 > a')->text());
+        $this->assertSame('Wandering the canals of Amsterdam in early spring', $crawler->filter('article.post')->first()->filter('h2 > a')->text());
     }
 }
